@@ -1,0 +1,57 @@
+﻿@page
+@model webappli_ben_taleb_badreddine.Pages.utilisateur.registerModel
+@{
+    ViewData["Title"] = "s'inscrire";
+}
+
+<body class="registrement">
+<div class="container123">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+                @if (Model.msgError != "")
+                {
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <small>@Model.msgError</small>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-
+                                label="Close"> </button>
+
+                    </div>
+                }
+            <form id="registerForm" method="post">
+                <h2 class="text-center mb-4">Inscription</h2>
+                <div class="form-row1 d-flex flex-row">
+                    <div class="form-group1 col-md-6">
+                        <label for="firstName">Nom</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName" placeholder="Entrez votre nom" required>
+                    </div>
+                    <div class="form-group1 col-md-6">
+                        <label for="lastName">Prénom</label>
+                        <input class="form-control" type="text" id="lastName" name="lastName" placeholder="Entrez votre prénom" required>
+                    </div>
+                </div>
+                <div class="form-row1 d-flex flex-row">
+                    <div class="form-group1 col-md-8">
+                        <label class="form-label" for="email">Adresse électronique</label>
+                        <input class="form-control" type="email" id="email" name="email" placeholder="Entrez votre adresse électronique" required>
+                    </div>
+                    <div class="form-group1 col-md-4">
+                        <label class="form-label" for="pw">Mot de passe</label>
+                        <input class="form-control" type="password" id="pw" name="pw" placeholder="Choisissez un mot de passe" required>
+                    </div>
+                </div>
+                <div class="form-row1 text-center">
+                    <button type="submit" class="btn btn-primary col-md-10">
+                        S'inscrire dans Plancher Expert
+                    </button>
+                </div>
+                <div class="form-row1 text-center mt-3">
+                    <p class="col-md-12 company-message">
+                        Plancher Expert s'engage à être bien plus qu'un fournisseur de revêtements de sol. Nous sommes votre partenaire dévoué pour des solutions de revêtement de sol exceptionnelles. Notre mission est de vous offrir bien plus qu'une simple sélection de couvre-planchers; nous proposons une expérience complète, centrée sur la qualité et la satisfaction de nos clients.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>

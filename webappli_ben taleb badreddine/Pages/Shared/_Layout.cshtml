@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - webappli_ben_taleb_badreddine</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/webappli_ben_taleb_badreddine.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <img src="~/Image/logo1.png" alt="Logo Plancher Expert"  height="120">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Plancher expert</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @if (Context.Session.GetString("userAuthenticated") == null){}
+                   else {
+
+                        <ul class="navbar-nav flex-grow-1">
+                           
+
+                            @if (Context.Session.GetString("userType") == "client")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/demande">Demande</a>
+                                </li>
+                            }
+                            else{
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-area="" asp-page="/demandeclients">demande clients</a>
+                            </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Couvreplancher/Index">Couvre Planchert</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Apropos">A propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    }
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <p class="nav-link">
+                                @if (Context.Session.GetString("userAuthenticated") == null)
+                                 {
+                                <a class="btn btn-outline-primary mr-2" asp-area="" asp-page="/utilisateur/Login">
+                                    Se connecter
+                                </a>
+                                
+                               
+                                <a class="btn btn-primary" asp-area="" asp-page="/utilisateur/register">
+                                    S'inscrire
+                                </a>
+                                }
+                                else
+                                {
+                                <p class="nav-link">
+                                        @Context.Session.GetString("userFirstName")
+                                        @Context.Session.GetString("userLastName")
+                                    <a class="text-dark" asp-area="" asp-page="/Utilisateur/Logout">
+                                        Se deconnecter
+                                    </a>
+                                </p>
+                                }
+                                                         </p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - webappli_ben_taleb_badreddine - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

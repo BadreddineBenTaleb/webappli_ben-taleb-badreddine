@@ -1,0 +1,47 @@
+﻿@page
+
+@model webappli_ben_taleb_badreddine.Pages.demandeclientsModel
+
+@{
+
+}
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col">
+            <h2>Liste des demandes de notre clients</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Type choisis</th>
+                        <th>Largeur</th>
+                        <th>Longueur</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Remplacez ces lignes par vos données réelles depuis votre modèle ou votre backend -->
+                    @foreach (var item in Model.demandeClient)
+                    {
+                        <tr>
+
+                            <td>@item.firstName</td>
+                            <td>@item.lastName</td>
+                            <td>@item.Type</td>
+                            <td>@item.Largeur</td>
+                            <td>@item.Longueur</td>
+                            <td></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

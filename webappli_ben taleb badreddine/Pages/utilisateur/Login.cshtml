@@ -1,0 +1,83 @@
+﻿@page
+@model webappli_ben_taleb_badreddine.Pages.utilisateur.LoginModel
+@{
+    ViewData["Title"] = "Authentification";
+}
+@if (Model.msgError != "")
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <small>@Model.msgError</small>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-
+                label="Close"></button>
+
+    </div>
+}
+@if (HttpContext.Session.GetString("userNotExist") != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <small>@HttpContext.Session.GetString("userNotExist")</small>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-
+                label="Close"> </button>
+
+    </div>
+}
+@if (HttpContext.Session.GetString("userPwError") != null)
+{
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<small>@HttpContext.Session.GetString("userPwError")</small>
+
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-
+label="Close"> </button>
+
+</div>
+}
+<body class="athtt">
+
+    <div class="container12">
+        <div class="row">
+            <div class="col-md-6">
+                @if (HttpContext.Session.GetString("userNotAdded") != null)
+                {
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <small>@HttpContext.Session.GetString("userNotAdded") </small>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-
+                                label="Close"> </button>
+
+                    </div>
+                }
+                <form id="loginForm" method="post" class="border rounded p-4">
+                    <h2 class="text-center mb-4">Authentification</h2>
+                    <hr>
+                    <div class="form-group">
+                        <label for="email">User</label>
+                        <input class="form-control" type="email" id="email" name="email"
+                               value="@Model.utilisateurData.userLogin" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pw">Mot de passe</label>
+                        <input class="form-control" type="password" id="pw" name="pw"  required>
+                    </div>
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <a href="#!">Mot de passe oublié?</a>
+                        </div>
+                    </div>
+                    <div class="form-row text-center">
+                        <input class="col-md-10 btn btn-primary btn-block m-1" type="submit" value="Se connecter">
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>
+                            Créer un compte? <a asp-area="" asp-page="/utilisateur/register">S'inscrire</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+                <img src="~/Image/planch.jpg" alt="Company Logo" class="company-logo">
+            </div>
+    </div>
+    </div>
+</body>
